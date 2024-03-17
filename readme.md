@@ -14,6 +14,12 @@ Clone the project:
 
 ```
 git clone git@github.com:Hamatti/config-renderer.git
+cd config-renderer
+
+# Activate virtualenv and install dependencies
+python -m venv venv
+source venv/bin/activate
+pip install docopt
 ```
 
 ## Usage
