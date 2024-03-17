@@ -1,0 +1,177 @@
+<!doctype html><html><head><title>Juhis' tmux configuration</title><style>main {
+  max-width: 80ch;
+  margin: auto;
+}
+
+pre {
+  background: #303030;
+  color: #f1f1f1;
+  padding: 10px 16px;
+  padding-top: 22px;
+  border-radius: 2px;
+  border-top: 4px solid #971226;
+  -moz-box-shadow: inset 0 0 10px #000;
+  box-shadow: inset 0 0 10px #000;
+  counter-reset: line;
+}
+
+pre span {
+  display: block;
+  line-height: 1.5rem;
+}
+
+pre span:before {
+  counter-increment: line;
+  content: counter(line);
+  display: inline-block;
+  border-right: 1px solid #ddd;
+  padding: 0 0.5em;
+  margin-right: 0.5em;
+  color: #888;
+}
+
+kbd {
+  --kbd-color-background: white;
+  --kbd-color-border: gray;
+  --kbd-color-text: black;
+
+  background-color: var(--kbd-color-background);
+  color: var(--kbd-color-text);
+
+  border-radius: 0.25rem;
+
+  border: 1px solid var(--kbd-color-border);
+
+  box-shadow: 0 2px 0 1px var(--kbd-color-border);
+
+  cursor: default;
+
+  font-family: monospace;
+
+  font-size: 0.75em;
+
+  min-width: 0.75rem;
+  display: inline-block;
+  text-align: center;
+
+  padding: 2px 5px;
+
+  position: relative;
+  top: -1px;
+  margin: 0 0.5em;
+}
+
+kbd:hover {
+  box-shadow: 0 1px 0 0.5px grey;
+  top: 1px;
+}
+
+hr {
+  margin: 2em;
+}
+</style></head><body><main><h1 class="configuration-heading">Juhis' tmux configuration</h1>
+<p class="container-paragraph">
+This is my current tmux configuration,
+rendered with my <code>confrender</code> utility tool
+</p>
+</p>
+</p>
+<h2 class="configuration-heading">Install plugins</h2>
+<p class="container-paragraph">
+<a class="configuration-link" href="https://github.com/tmux-plugins/tpm">Tmux Plugin Manager</a> to install other plugins
+</p>
+<pre class="configuration-pre"><code><span>set -g @plugin 'tmux-plugins/tpm'</span>
+</code></pre>
+<p class="container-paragraph">
+<a class="configuration-link" href="https://github.com/catppuccin/tmux">catppuccin</a> theme to make things look nice
+</p>
+<pre class="configuration-pre"><code><span>set -g @plugin 'catppuccin/tmux'</span>
+</code></pre>
+<p class="container-paragraph">
+<a class="configuration-link" href="https://github.com/tmux-plugins/tmux-resurrect">tmux-resurrect</a> for saving and restoring tmux sessions
+</p>
+<pre class="configuration-pre"><code><span>set -g @plugin 'tmux-plugins/tmux-resurrect'</span>
+</code></pre>
+<p class="container-paragraph">
+<a class="configuration-link" href="https://github.com/tmux-plugins/tmux-continuum">tmux-continuum</a> to automate saving of sessions
+</p>
+<pre class="configuration-pre"><code><span>set -g @plugin 'tmux-plugins/tmux-continuum'</span>
+</code></pre>
+<hr class="{class_prefix}-divider" />
+<h2 class="configuration-heading">Keybindings</h2>
+<p class="container-paragraph">
+Change the leader/prefix to <kbd>ctrl-s</kbd>
+</p>
+<pre class="configuration-pre"><code><span>set -g prefix C-s</span>
+</code></pre>
+<p class="container-paragraph">
+Configure <kbd>leader-r</kbd> to reload the configuration within a tmux session
+</p>
+<pre class="configuration-pre"><code><span>unbind r</span>
+<span>bind r source-file ~/.tmux.conf</span>
+</code></pre>
+<p class="container-paragraph">
+Enable mouse interactions
+</p>
+<pre class="configuration-pre"><code><span>set -g mouse on</span>
+</code></pre>
+<p class="container-paragraph">
+split panes using <kbd>|</kbd> and <kbd>-</kbd> instead of <kbd>%</kbd> and <kbd>"</kbd>
+</p>
+<pre class="configuration-pre"><code><span>bind | split-window -h</span>
+<span>bind - split-window -v</span>
+<span>unbind '"'</span>
+<span>unbind %</span>
+</code></pre>
+<p class="container-paragraph">
+switch panes using <kbd>M-↑</kbd>, <kbd>M-↓</kbd>, <kbd>M-←</kbd> and <kbd>M-→</kbd> without the need to press leader first.
+</p>
+Note: <kbd>M</kbd> is usually Alt/Option
+</p>
+<pre class="configuration-pre"><code><span>bind -n M-Left select-pane -L</span>
+<span>bind -n M-Right select-pane -R</span>
+<span>bind -n M-Up select-pane -U</span>
+<span>bind -n M-Down select-pane -D</span>
+</code></pre>
+<hr class="{class_prefix}-divider" />
+<h2 class="configuration-heading">Appearance</h2>
+<p class="container-paragraph">
+Move the status bar to the top of the screen to clear clutter from the bottom when using TUI tools.
+</p>
+<pre class="configuration-pre"><code><span>set-option -g status-position top</span>
+</code></pre>
+<p class="container-paragraph">
+Catppuccin specific styling
+</p>
+Show window number after the name
+</p>
+<pre class="configuration-pre"><code><span>set -g @catppuccin_window_number_position "right"</span>
+</code></pre>
+<p class="container-paragraph">
+Set default and current fills for windows
+</p>
+<pre class="configuration-pre"><code><span>set -g @catppuccin_window_default_fill "number"</span>
+<span>set -g @catppuccin_window_default_text "#W"</span>
+<span>set -g @catppuccin_window_current_fill "number"</span>
+<span>set -g @catppuccin_window_current_text "#W"</span>
+</code></pre>
+<p class="container-paragraph">
+Set status settings
+</p>
+<pre class="configuration-pre"><code><span>set -g @catppuccin_status_modules_right "directory session"</span>
+<span>set -g @catppuccin_status_fill "icon"</span>
+<span>set -g @catppuccin_status_connect_separator "no"</span>
+</code></pre>
+<p class="container-paragraph">
+Set directory text to current path
+</p>
+<pre class="configuration-pre"><code><span>set -g @catppuccin_directory_text "#{pane_current_path}"</span>
+</code></pre>
+<hr class="{class_prefix}-divider" />
+<h2 class="configuration-heading">Initialize TMUX plugin manager</h2>
+<p class="container-paragraph">
+According to <a class="configuration-link" href="https://github.com/tmux-plugins/tpm?tab=readme-ov-file#installation">tpm documentation</a>, this line should be at the end of the configuration
+</p>
+</p>
+<pre class="configuration-pre"><code><span>run '~/.tmux/plugins/tpm/tpm'</span>
+</code></pre></main></body></html>
