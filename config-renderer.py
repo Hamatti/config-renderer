@@ -120,7 +120,7 @@ def render_config_file(filename, class_prefix):
                     # Add text to paragraph tags
                     else:
                         if not in_paragraph_block:
-                            output.append('<p class="container-paragraph">')
+                            output.append(f'<p class="{class_prefix}-paragraph">')
                         line = line[1:].strip()
                         output.append(line)
                         in_paragraph_block = True
