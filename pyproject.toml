@@ -1,0 +1,16 @@
+[project]
+name = "config-renderer"
+description = "Generate HTML documentation from dotfiles"
+version = "1.0.0"
+requires-python = ">=3.7"
+license = { text = "MIT License" }
+authors = [ { name = "Juha-Matti Santala", email = "juhamattisantala@gmail.com" } ]
+dependencies = [ "docopt" ]
+
+[project.scripts]
+config-renderer = "config_renderer:main"
+
+[project.urls]
+Documentation = "https://github.com/hamatti/config-renderer#readme"
+Issues = "https://github.com/hamatti/config-renderer/issues"
+Source = "https://github.com/hamatti/config-renderer/"
