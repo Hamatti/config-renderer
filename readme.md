@@ -1,5 +1,7 @@
 # config-renderer
 
+![PyPI - Version](https://img.shields.io/pypi/v/config-renderer)
+
 config-renderer is a Python CLI utility that reads a configuration file and optional CSS stylesheet and renders a nice looking HTML page from it.
 
 See example documentation page in https://hamatti.github.io/config-renderer/
