@@ -1,6 +1,6 @@
 # config-renderer
 
-![PyPI - Version](https://img.shields.io/pypi/v/config-renderer)
+[![PyPI - Version](https://img.shields.io/pypi/v/config-renderer)](https://pypi.org/project/config-renderer/)
 
 config-renderer is a Python CLI utility that reads a configuration file and optional CSS stylesheet and renders a nice looking HTML page from it.
 
