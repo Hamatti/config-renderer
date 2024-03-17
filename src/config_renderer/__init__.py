@@ -71,7 +71,7 @@ def render_config_file(filename, class_prefix):
                         in_code_block = False
                     elif in_paragraph_block:
                         output.append("</p>")
-                        in_code_block = False
+                        in_paragraph_block = False
                 elif line.startswith("#"):  # Markup
                     # End any code tags if open
                     if in_code_block:
