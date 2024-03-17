@@ -113,3 +113,14 @@ results in
   </body>
 </html>
 ```
+
+## Build and upload to PyPi
+
+Update version number in pyproject.toml
+
+```
+rm -rf dist/
+python -m build --sdist
+python -m build --wheel
+twine upload dist/*
+```
