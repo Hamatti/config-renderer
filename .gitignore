@@ -3,3 +3,8 @@
 *.conf
 !public/*
 venv/
+.env
+build/
+dist/
+src/config_renderer.egg-info/
+__pycache__/

@@ -8,21 +8,9 @@ See example documentation page in https://hamatti.github.io/config-renderer/
 
 I like to document my configuration files well so I can understand and remember them well. I also like sharing my configurations in the web and I wanted a way to write configuration files that are human-readable and computer-understandable. With this renderer, I can run a single command to generate an HTML page from the source file so I don't need to maintain two separate documentations.
 
-## Installation
-
-Clone the project:
-
-```
-git clone git@github.com:Hamatti/config-renderer.git
-cd config-renderer
-
-# Activate virtualenv and install dependencies
-python -m venv venv
-source venv/bin/activate
-pip install docopt
-```
-
 ## Usage
+
+You can run config-renderer with `pipx run config-renderer`
 
 ```
 Configuration renderer
@@ -98,7 +86,7 @@ set -g @plugin 'tmux-plugins/tmux-resurrect'
 ran with
 
 ```
-python config-renderer.py example.conf
+pipx run config-renderer.py example.conf
 ```
 
 results in

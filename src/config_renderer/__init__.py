@@ -197,7 +197,3 @@ def main():
     with open(output_filename, "w") as outfile:
         outfile.write(html)
         print(f"Successfully wrote the config html page to {output_filename}")
-
-
-if __name__ == "__main__":
-    main()
